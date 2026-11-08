@@ -6,6 +6,7 @@
   "scripts": {
     "build:dev": "node scripts/check.js",
     "build:images": "node scripts/build-images.js",
+    "dev": "node scripts/serve.js",
     "serve": "node scripts/serve.js",
     "start": "node scripts/serve.js",
     "test": "node scripts/check.js",
