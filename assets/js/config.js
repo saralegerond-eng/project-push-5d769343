@@ -11,7 +11,7 @@
  *   International format without "+" or spaces.
  */
 window.BONCHOIX_CONFIG = {
-  orderEndpoint: "", // مثال: "https://your-api.com/orders"
+  orderEndpoint: "", // Database submission is configured by the landing page script.
   whatsappNumber: "212679502789",
   whatsappDisplay: "0679502789",
   unitPrice: 199,
