@@ -22,6 +22,13 @@
       "when": 1794150398177,
       "tag": "0002_allow_customer_order_submission",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1794150455695,
+      "tag": "0003_permit_landing_order_inserts",
+      "breakpoints": true
     }
   ]
 }
