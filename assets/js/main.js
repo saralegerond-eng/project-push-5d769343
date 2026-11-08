@@ -25,6 +25,21 @@
   const formatMoney = (value) => `${numberFormat.format(value)} ${currency}`;
 
   /* ------------------------------------------------------------------ */
+  /* Anonymous visit count                                               */
+  /* ------------------------------------------------------------------ */
+  const visitStorageKey = "bonchoix-visit-recorded";
+  const recordVisit = async () => {
+    if (!window.bonchoixDb || window.sessionStorage.getItem(visitStorageKey)) return;
+    window.sessionStorage.setItem(visitStorageKey, "1");
+    try {
+      await window.bonchoixDb.from("site_visits").insert({});
+    } catch (_) {
+      window.sessionStorage.removeItem(visitStorageKey);
+    }
+  };
+  recordVisit();
+
+  /* ------------------------------------------------------------------ */
   /* Reveal on scroll                                                    */
   /* ------------------------------------------------------------------ */
   const revealItems = $$(".reveal");

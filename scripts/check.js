@@ -162,6 +162,8 @@ const adminChecks = [
   [adminJs.includes('eq("role", "admin")'), "Dashboard must verify an admin role"],
   [adminJs.includes('signInWithPassword'), "Dashboard must use password sign-in"],
   [mainJs.includes('.from("orders")') && mainJs.includes('status: "new"'), "Landing form must save new orders"],
+  [mainJs.includes('.from("site_visits").insert({})'), "Landing page must record anonymous visit totals"],
+  [adminJs.includes('"زيارات الموقع"') && adminJs.includes('"زيارات اليوم"'), "Dashboard must show total and daily visits"],
   [configJs.includes('source: "landing-page"'), "Landing order source must match the accepted order rule"]
 ];
 adminChecks.forEach(([condition, label]) => {
