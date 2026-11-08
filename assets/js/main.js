@@ -554,15 +554,10 @@
           source: "landing-page",
           idempotency_key: payload.idempotencyKey
         };
-        const { data, error } = await window.bonchoixDb
-          .from("orders")
-          .insert(orderToSave)
-          .select("order_number")
-          .single();
-
-        if (error || !data || !data.order_number) throw new Error("Order could not be saved");
+        const { error } = await window.bonchoixDb.from("orders").insert(orderToSave);
+        if (error) throw new Error("Order could not be saved");
         markSubmitted(values);
-        showSuccess({ saved: true, values, orderId: `#${data.order_number}`, waUrl });
+        showSuccess({ saved: true, values, waUrl });
       } else if (config.orderEndpoint) {
         const controller = new AbortController();
         const timeout = window.setTimeout(() => controller.abort(), 12000);
