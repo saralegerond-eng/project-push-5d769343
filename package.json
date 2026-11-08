@@ -26,9 +26,13 @@
   "license": "UNLICENSED",
   "type": "commonjs",
   "dependencies": {
+    "@supabase/supabase-js": "^2.119.0",
     "sharp": "^0.35.5"
   },
   "devDependencies": {
+    "drizzle-kit": "0.x",
+    "drizzle-orm": "0.x",
+    "postgres": "^4.1.0",
     "puppeteer-core": "^25.16.0"
   }
 }
