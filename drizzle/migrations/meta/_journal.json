@@ -8,6 +8,13 @@
       "when": 1794149834331,
       "tag": "0000_create_secure_order_management",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794150224549,
+      "tag": "0001_limit_role_function_to_signed_in_users",
+      "breakpoints": true
     }
   ]
 }
