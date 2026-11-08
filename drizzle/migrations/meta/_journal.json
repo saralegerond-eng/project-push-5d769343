@@ -1,5 +1,34 @@
 {
   "version": "7",
   "dialect": "postgresql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1794149834331,
+      "tag": "0000_create_secure_order_management",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794150224549,
+      "tag": "0001_limit_role_function_to_signed_in_users",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794150398177,
+      "tag": "0002_allow_customer_order_submission",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1794150455695,
+      "tag": "0003_permit_landing_order_inserts",
+      "breakpoints": true
+    }
+  ]
 }

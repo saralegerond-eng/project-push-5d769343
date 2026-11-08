@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f7fbff">
+  <title>لوحة الطلبات الخاصة | BON CHOIX</title>
+  <meta name="description" content="لوحة خاصة وآمنة لتسيير طلبات BON CHOIX.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body>
+  <main class="auth-shell" id="authView">
+    <section class="auth-panel" aria-labelledby="auth-title">
+      <p class="eyebrow">BON CHOIX</p>
+      <h1 id="auth-title">دخول الإدارة</h1>
+      <p class="muted">هذه المساحة خاصة فقط بصاحبة المشروع.</p>
+      <form id="loginForm" class="login-form">
+        <label>الإيميل<input id="email" type="email" autocomplete="email" required maxlength="255"></label>
+        <label>كلمة السر<input id="password" type="password" autocomplete="current-password" required minlength="8"></label>
+        <p class="form-message" id="loginMessage" role="alert" hidden></p>
+        <button class="button primary" type="submit" id="loginButton">دخول آمن</button>
+      </form>
+    </section>
+  </main>
+
+  <main class="dashboard" id="dashboardView" hidden>
+    <header class="topbar">
+      <div><p class="eyebrow">BON CHOIX</p><h1>الطلبات</h1></div>
+      <div class="top-actions"><button class="button secondary" id="exportCsv">تحميل CSV</button><button class="button ghost" id="logoutButton">خروج</button></div>
+    </header>
+    <section class="metrics" id="metrics"></section>
+    <section class="controls" aria-label="البحث والتصفية">
+      <input id="searchInput" type="search" placeholder="قلب بالاسم أو رقم الهاتف">
+      <select id="statusFilter"><option value="">كل الحالات</option><option value="new">جديد</option><option value="confirmed">تم التأكيد</option><option value="shipped">في التوصيل</option><option value="delivered">تم التسليم</option><option value="cancelled">ملغي</option></select>
+      <input id="dateFilter" type="date" aria-label="التصفية حسب التاريخ">
+    </section>
+    <section class="orders-area">
+      <p class="table-message" id="tableMessage" role="status"></p>
+      <div class="table-wrap"><table><thead><tr><th>رقم</th><th>الزبون</th><th>الهاتف</th><th>المدينة</th><th>المنتج</th><th>الكمية</th><th>المجموع</th><th>التاريخ</th><th>الحالة</th><th>إجراء</th></tr></thead><tbody id="ordersBody"></tbody></table></div>
+    </section>
+  </main>
+
+  <dialog id="orderDialog" class="order-dialog"><form method="dialog"><button class="close" aria-label="إغلاق">×</button><div id="orderDetails"></div></form></dialog>
+  <script src="../assets/js/supabase.min.js"></script>
+  <script src="../assets/js/supabase-client.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>

@@ -25,6 +25,8 @@ const html = read("index.html");
 const css = read("assets/css/styles.css");
 const mainJs = read("assets/js/main.js");
 const configJs = read("assets/js/config.js");
+const adminHtml = read("admin/index.html");
+const adminJs = read("assets/js/admin.js");
 
 /* ---------- Local asset references ---------- */
 const refs = new Set();
@@ -111,6 +113,7 @@ else pass("All JS hooks exist in the markup");
 try {
   new vm.Script(mainJs, { filename: "main.js" });
   new vm.Script(configJs, { filename: "config.js" });
+  new vm.Script(adminJs, { filename: "admin.js" });
   pass("JavaScript files parse without syntax errors");
 } catch (error) {
   fail(`JavaScript syntax error: ${error.message}`);
@@ -137,6 +140,19 @@ seoChecks.forEach(([pattern, label]) => {
   if (!pattern.test(html)) fail(`Missing or incomplete SEO element: ${label}`);
 });
 if (!failures.some((item) => item.startsWith("Missing or incomplete SEO"))) pass("Core SEO metadata is present");
+
+/* ---------- Private dashboard wiring ---------- */
+const adminChecks = [
+  [adminHtml.includes('name="robots" content="noindex, nofollow"'), "Private dashboard must not be indexed"],
+  [adminHtml.includes("supabase-client.js") && adminHtml.includes("admin.js"), "Private dashboard scripts must be wired"],
+  [adminJs.includes('eq("role", "admin")'), "Dashboard must verify an admin role"],
+  [adminJs.includes('signInWithPassword'), "Dashboard must use password sign-in"],
+  [mainJs.includes('.from("orders")') && mainJs.includes('status: "new"'), "Landing form must save new orders"]
+];
+adminChecks.forEach(([condition, label]) => {
+  if (!condition) fail(label);
+});
+if (!failures.some((item) => adminChecks.some(([, label]) => item === label))) pass("Private dashboard and order saving are wired");
 
 /* ---------- Report ---------- */
 console.log("\nBON CHOIX — landing page checks\n");

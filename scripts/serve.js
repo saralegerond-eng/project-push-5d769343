@@ -14,7 +14,9 @@ const path = require("node:path");
 const { URL } = require("node:url");
 
 const root = path.resolve(__dirname, "..");
-const portArg = Number.parseInt(process.argv[2], 10);
+const requestedPortIndex = process.argv.findIndex((argument) => argument === "--port");
+const requestedPort = requestedPortIndex >= 0 ? process.argv[requestedPortIndex + 1] : process.argv[2];
+const portArg = Number.parseInt(requestedPort, 10);
 const port = Number.isFinite(portArg) && portArg > 0 ? portArg : Number(process.env.PORT) || 4173;
 
 const MIME = {

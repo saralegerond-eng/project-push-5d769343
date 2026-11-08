@@ -537,7 +537,28 @@
     const waUrl = buildWhatsAppUrl(values);
 
     try {
-      if (config.orderEndpoint) {
+      if (window.bonchoixDb) {
+        const orderToSave = {
+          first_name: values.firstName,
+          last_name: values.lastName,
+          phone: values.phone,
+          city: values.city,
+          full_address: values.address,
+          product_name: config.productName || "Premier Nasal Dilator – Starter Kit",
+          product_price: unitPrice,
+          quantity: values.quantity,
+          total_amount: values.total,
+          delivery_fee: 0,
+          status: "new",
+          admin_notes: "",
+          source: "landing-page",
+          idempotency_key: payload.idempotencyKey
+        };
+        const { error } = await window.bonchoixDb.from("orders").insert(orderToSave);
+        if (error) throw new Error("Order could not be saved");
+        markSubmitted(values);
+        showSuccess({ saved: true, values, waUrl });
+      } else if (config.orderEndpoint) {
         const controller = new AbortController();
         const timeout = window.setTimeout(() => controller.abort(), 12000);
         let response;
