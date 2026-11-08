@@ -161,7 +161,8 @@ const adminChecks = [
   [adminHtml.includes("supabase-client.js") && adminHtml.includes("admin.js"), "Private dashboard scripts must be wired"],
   [adminJs.includes('eq("role", "admin")'), "Dashboard must verify an admin role"],
   [adminJs.includes('signInWithPassword'), "Dashboard must use password sign-in"],
-  [mainJs.includes('.from("orders")') && mainJs.includes('status: "new"'), "Landing form must save new orders"]
+  [mainJs.includes('.from("orders")') && mainJs.includes('status: "new"'), "Landing form must save new orders"],
+  [configJs.includes('source: "landing-page"'), "Landing order source must match the accepted order rule"]
 ];
 adminChecks.forEach(([condition, label]) => {
   if (!condition) fail(label);

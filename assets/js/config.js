@@ -21,5 +21,5 @@ window.BONCHOIX_CONFIG = {
   minQuantity: 1,
   maxQuantity: 10,
   duplicateWindowMs: 90000,
-  source: "bonchoix-landing-page"
+  source: "landing-page"
 };
