@@ -27,6 +27,8 @@ const mainJs = read("assets/js/main.js");
 const configJs = read("assets/js/config.js");
 const adminHtml = read("admin/index.html");
 const adminJs = read("assets/js/admin.js");
+const robotsTxt = read("robots.txt");
+const sitemapXml = read("sitemap.xml");
 
 /* ---------- Local asset references ---------- */
 const refs = new Set();
@@ -140,6 +142,18 @@ seoChecks.forEach(([pattern, label]) => {
   if (!pattern.test(html)) fail(`Missing or incomplete SEO element: ${label}`);
 });
 if (!failures.some((item) => item.startsWith("Missing or incomplete SEO"))) pass("Core SEO metadata is present");
+
+/* ---------- Search discovery ---------- */
+if (!/User-agent:\s*\*/.test(robotsTxt) || !/Allow:\s*\//.test(robotsTxt) || !robotsTxt.includes("Sitemap: https://project-launch-bridge.lovable.app/sitemap.xml")) {
+  fail("robots.txt must allow crawlers and reference the public sitemap");
+} else {
+  pass("Crawler rules allow the public site and reference the sitemap");
+}
+if (!sitemapXml.includes("https://project-launch-bridge.lovable.app/") || sitemapXml.includes("/admin/")) {
+  fail("sitemap.xml must list the public landing page and exclude the private dashboard");
+} else {
+  pass("Sitemap lists the public landing page only");
+}
 
 /* ---------- Private dashboard wiring ---------- */
 const adminChecks = [
