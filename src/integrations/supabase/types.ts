@@ -107,6 +107,24 @@ export type Database = {
         }
         Returns: boolean
       }
+      is_valid_landing_page_order: {
+        Args: {
+          _admin_notes: string
+          _city: string
+          _delivery_fee: number
+          _first_name: string
+          _full_address: string
+          _last_name: string
+          _phone: string
+          _product_name: string
+          _product_price: number
+          _quantity: number
+          _source: string
+          _status: Database["public"]["Enums"]["order_status"]
+          _total_amount: number
+        }
+        Returns: boolean
+      }
     }
     Enums: {
       app_role: "admin"
