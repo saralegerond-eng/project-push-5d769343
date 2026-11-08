@@ -36,6 +36,13 @@
       "when": 1794151965358,
       "tag": "0004_restrict_public_order_submissions",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1794163546432,
+      "tag": "0005_fix_landing_order_validation_regex",
+      "breakpoints": true
     }
   ]
 }
