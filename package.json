@@ -4,13 +4,15 @@
   "private": true,
   "description": "BON CHOIX — Premier Nasal Dilator Arabic (Darija) landing page with WhatsApp ordering and configurable order API.",
   "scripts": {
-    "build:dev": "node scripts/check.js",
+    "build": "node scripts/build.js",
+    "build:dev": "node scripts/check.js && node scripts/build.js",
     "build:images": "node scripts/build-images.js",
     "dev": "node scripts/serve.js",
     "serve": "node scripts/serve.js",
     "start": "node scripts/serve.js",
     "test": "node scripts/check.js",
-    "test:ui": "node scripts/test-ui.js"
+    "test:ui": "node scripts/test-ui.js",
+    "typecheck": "node -e \"console.log('No TypeScript files to check.')\""
   },
   "keywords": [
     "landing-page",
