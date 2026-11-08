@@ -77,6 +77,27 @@ export type Database = {
         }
         Relationships: []
       }
+      site_visits: {
+        Row: {
+          id: string
+          session_token: string
+          visit_date: string
+          visited_at: string
+        }
+        Insert: {
+          id?: string
+          session_token?: string
+          visit_date?: string
+          visited_at?: string
+        }
+        Update: {
+          id?: string
+          session_token?: string
+          visit_date?: string
+          visited_at?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string
