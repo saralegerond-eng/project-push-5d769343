@@ -64,8 +64,8 @@ else pass(`All ${imgTags.length} <img> tags have alt text`);
 const required = [
   "عرض خاص بالمغرب",
   "تنفس براحة أكثر",
-  "199 درهم فقط",
-  "اطلب دابا بـ 199 درهم",
+  "99 درهم فقط",
+  "اطلب دابا بـ 99 درهم",
   "التوصيل مجاني",
   "الأداء عند الاستلام",
   "متفوتش الفرصة!",
@@ -164,7 +164,8 @@ const adminChecks = [
   [mainJs.includes('.from("orders")') && mainJs.includes('status: "new"'), "Landing form must save new orders"],
   [mainJs.includes('.from("site_visits").insert({})'), "Landing page must record anonymous visit totals"],
   [adminJs.includes('"زيارات الموقع"') && adminJs.includes('"زيارات اليوم"'), "Dashboard must show total and daily visits"],
-  [configJs.includes('source: "landing-page"'), "Landing order source must match the accepted order rule"]
+  [configJs.includes('source: "landing-page"'), "Landing order source must match the accepted order rule"],
+  [configJs.includes('unitPrice: 99'), "Landing order price must be 99 MAD"]
 ];
 adminChecks.forEach(([condition, label]) => {
   if (!condition) fail(label);

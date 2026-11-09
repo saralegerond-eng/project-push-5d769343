@@ -50,6 +50,13 @@
       "when": 1794181292494,
       "tag": "0006_add_privacy_friendly_visit_tracking",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1794229860985,
+      "tag": "0007_update_landing_order_price_to_99",
+      "breakpoints": true
     }
   ]
 }

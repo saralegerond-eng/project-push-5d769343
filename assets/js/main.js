@@ -10,7 +10,7 @@
   "use strict";
 
   const config = window.BONCHOIX_CONFIG || {};
-  const unitPrice = Number(config.unitPrice) || 199;
+  const unitPrice = Number(config.unitPrice) || 99;
   const currency = config.currency || "درهم";
   const minQty = Number(config.minQuantity) || 1;
   const maxQty = Number(config.maxQuantity) || 10;
