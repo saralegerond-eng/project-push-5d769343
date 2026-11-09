@@ -14,7 +14,7 @@ window.BONCHOIX_CONFIG = {
   orderEndpoint: "", // Database submission is configured by the landing page script.
   whatsappNumber: "212679502789",
   whatsappDisplay: "0679502789",
-  unitPrice: 199,
+  unitPrice: 99,
   currency: "درهم",
   productName: "Premier Nasal Dilator – Starter Kit",
   brand: "BON CHOIX",
